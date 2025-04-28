@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import test.commerce.ValidUsernameSource;
 import test.commerce.api.CommerceApiTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -151,13 +152,7 @@ public class POST_specs {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-        "abcdefghijklmnopqrstuvwxyz",
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        "0123456789",
-        "shopper_",
-        "shopper-"
-    })
+    @ValidUsernameSource
     void username_속성이_올바른_형식을_따르면_204_No_Content_상태코드를_반환한다(
         String username,
         @Autowired TestRestTemplate client

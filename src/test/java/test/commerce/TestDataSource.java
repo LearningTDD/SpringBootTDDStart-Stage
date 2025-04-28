@@ -1,5 +1,7 @@
 package test.commerce;
 
+import static java.util.UUID.randomUUID;
+
 public class TestDataSource {
 
     public static String[] invalidPasswords() {
@@ -21,6 +23,14 @@ public class TestDataSource {
             "invalid-email@test",
             "invalid-email@test.",
             "invalid-email@.com"
+        };
+    }
+
+    public static String[] validUsernames() {
+        return new String[] {
+            randomUUID().toString(),
+            randomUUID().toString().toUpperCase(),
+            randomUUID().toString().replace("-", "_")
         };
     }
 }
