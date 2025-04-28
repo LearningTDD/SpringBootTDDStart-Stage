@@ -3,8 +3,22 @@ security:
     secret: e4eaaaf2-d142-11e1-b3e4-080027620cdd
 
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/commerce
+    username: postgres
+    password: mysecretpassword
+    driver-class-name: org.postgresql.Driver
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
-        hbm2ddl:
-          halt_on_error: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+    org.springframework.transaction: DEBUG
+    org.springframework.orm.jpa.JpaTransactionManager: DEBUG
